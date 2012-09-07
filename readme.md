@@ -1,4 +1,6 @@
 # EmonTx - Wireless energy-monitoring node 
+# EmonTx - Wireless energy-monitoring node 
+# I am using openenergymonitor to learn github and to create my project. All this page will be modified to my own information soon. 
 
 Main EmonTx page: 
 http://openenergymonitor.org/emon/emontx
