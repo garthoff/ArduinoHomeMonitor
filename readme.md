@@ -10,6 +10,15 @@ http://openenergymonitor.org/emon/emontx
 Builds on JeeLabs software and compatible with JeeNode hardware
 
 ## Libraries Needed
+* LCD bv4618_I: https://github.com/ArduinoHomeMonitor/Libraries/bv4618_I
+* Temperature & Humidity Sensor DHT11: https://github.com/ArduinoHomeMonitor/Libraries/DHT11
+* LCD LiquidCrystal_I2C: https://github.com/ArduinoHomeMonitor/Libraries/LiquidCrystal_I2C
+* MemoryFree: https://github.com/ArduinoHomeMonitor/Libraries/MemoryFree
+* OneWire: https://github.com/ArduinoHomeMonitor/Libraries/OneWire
+* RTClib: https://github.com/ArduinoHomeMonitor/Libraries/RTClib
+* Ultrasonic: https://github.com/ArduinoHomeMonitor/Libraries/Ultrasonic
+* RF:
+
 * RFM12: http://github.com/jcw/jeelib
 * Mains Voltage and current: https://github.com/openenergymonitor/EmonLib
 * Temperature control library: http://download.milesburton.com/Arduino/MaximTemperature/ (version 372 works with Arduino 1.0) and OneWire library: http://www.pjrc.com/teensy/td_libs_OneWire.html
