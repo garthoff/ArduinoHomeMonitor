@@ -1,31 +1,44 @@
 # Arduino Home Monitor
 # By: Sergio Escuder
 
-# EmonTx - Wireless energy-monitoring node 
-I am using openenergymonitor to learn github and to create my project. All this page will be modified to my own information soon. 
+## Background information
+This is my first mayor project in Arduino and I will use this repository to create a full code documentation of everything needed for other Arduino enthusiasts to replicate, learn and make use of all the information gathered here.
+I must first of all thank Trystan Lee and all the members of openenergymonitor.org for creating such an amazing website full of very usefull information and providing help to anyone who needs it. I will sure try to remark this gratitude in all my code that has some work from openenergymonitor.org 
 
-Main EmonTx page: 
-http://openenergymonitor.org/emon/emontx
-
-Builds on JeeLabs software and compatible with JeeNode hardware
 
 ## Libraries Needed
+Here is a list of all the libraries used along the project. All this libraries have been found on the internet, none of them are created by me so hopefully the creators have left some information in their files stating this. All I want to do is help by providing a simple list of libraries which have been tested in Arduino 1.0.1 and are fully working as well as adding some interesting examples.
 * LCD bv4618_I: https://github.com/ArduinoHomeMonitor/Libraries/bv4618_I
-* Temperature & Humidity Sensor DHT11: https://github.com/ArduinoHomeMonitor/Libraries/DHT11
 * LCD LiquidCrystal_I2C: https://github.com/ArduinoHomeMonitor/Libraries/LiquidCrystal_I2C
+* Temperature & Humidity Sensor DHT11: https://github.com/ArduinoHomeMonitor/Libraries/DHT11
+	* Temperature control library: http://download.milesburton.com/Arduino/MaximTemperature/ (version 372 works with Arduino 1.0) and OneWire library: http://www.pjrc.com/teensy/td_libs_OneWire.html
 * MemoryFree: https://github.com/ArduinoHomeMonitor/Libraries/MemoryFree
 * OneWire: https://github.com/ArduinoHomeMonitor/Libraries/OneWire
 * RTClib: https://github.com/ArduinoHomeMonitor/Libraries/RTClib
 * Ultrasonic: https://github.com/ArduinoHomeMonitor/Libraries/Ultrasonic
-* RF:
-
-* RFM12: http://github.com/jcw/jeelib
+* RF: VirtualWire: https://github.com/ArduinoHomeMonitor/Libraries/VirtualWire
+	* RFM12: http://github.com/jcw/jeelib
 * Mains Voltage and current: https://github.com/openenergymonitor/EmonLib
-* Temperature control library: http://download.milesburton.com/Arduino/MaximTemperature/ (version 372 works with Arduino 1.0) and OneWire library: http://www.pjrc.com/teensy/td_libs_OneWire.html
-* ElsterMeterReader: https://github.com/openenergymonitor/ElsterMeterReader
 
-## EmonTx Code guide
+
+## ArduinoHomeMonitor Modules Examples
 The EmonTx code guide goes through main components required to put a full emontx firmware together. It's recommended that you work through these examples first so that you have a good understanding of how the full firmware's work.
+The order in which this modules appear listed here has been stablished in order to allow a profitable step by step learning curve. This means learning things like LCDs on the first step allows to be able to integrate LCD screen in the learning curve whenever neccesary.
+
+
+## Full ArduinoHomeMonitor Firmware's
+Here is a list of the different firmware builds, each of them tries to fullfil the multiple environments or requirements the project demands
+
+* Master Unit
+* Diesel monitor
+* Watchdog module
+* Data visualizer
+
+
+
+
+
+
 * [01 - Single CT](https://github.com/openenergymonitor/emonTxFirmware/blob/master/Guide/a_SingleCT/a_SingleCT.ino)
 * [02 - Second CT](https://github.com/openenergymonitor/emonTxFirmware/blob/master/Guide/b_SecondCT/b_SecondCT.ino)
 * [03 - AC Voltage](https://github.com/openenergymonitor/emonTxFirmware/blob/master/Guide/c_ACVoltage/c_ACVoltage.ino)
