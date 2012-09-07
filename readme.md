@@ -24,7 +24,16 @@ Here is a list of all the libraries used along the project. All this libraries h
 ## ArduinoHomeMonitor Modules Examples
 The EmonTx code guide goes through main components required to put a full emontx firmware together. It's recommended that you work through these examples first so that you have a good understanding of how the full firmware's work.
 The order in which this modules appear listed here has been stablished in order to allow a profitable step by step learning curve. This means learning things like LCDs on the first step allows to be able to integrate LCD screen in the learning curve whenever neccesary.
-
+* LCD
+* DS1820
+* DHT11
+* Status_Led
+* RTC1307
+* Ethernet
+* Ultrasonic
+* EnergyMeter
+* Watchdog
+* Speaker
 
 ## Full ArduinoHomeMonitor Firmware's
 Here is a list of the different firmware builds, each of them tries to fullfil the multiple environments or requirements the project demands
