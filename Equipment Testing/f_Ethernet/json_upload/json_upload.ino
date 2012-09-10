@@ -76,7 +76,7 @@ void loop ()
 void createJSON()
 {
     //strcpy(str,"/emoncms/post.php?json=");                //URL //If your using a shared server add in full URL here
-    strcpy(str,"GET http://sectorsocarrat.com/powermonitor/post.php?json=");                         //URL
+    strcpy(str,"GET http://xxxxxxxxxxxxxxxx.com/powermonitor/post.php?json=");                         //URL
 
     srtJSON(str);                             //Start JSON
       addJSON(str,"segundos",millis()/2);     //JSON line 2
