@@ -17,10 +17,8 @@
 
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
-byte mac[] = {  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-//IPAddress server(173,194,33,104); // Google
-//IPAddress server(173,194,34,215); // Google
-IPAddress server(188,121,46,128); // Goddady 
+byte mac[] = {  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xEE };
+IPAddress server(188,121,46,128); // Goddady  //IPAddress server(173,194,34,215); // Google
 
 // Initialize the Ethernet client library
 // with the IP address and port of the server 
@@ -28,55 +26,59 @@ IPAddress server(188,121,46,128); // Goddady
 EthernetClient client;
 
 
-
+  char str[250];
+//----------------------------------------------------------------------------
 
   long year;
-  
-  
+  unsigned long previousmillis;
+      char c;
   
 void setup() {
   // start the serial library:
   Serial.begin(9600);
+
+  // ****************** Ethernet SETUP ******************* //
   // start the Ethernet connection:
   if (Ethernet.begin(mac) == 0) {
-    Serial.println("Failed to configure Ethernet using DHCP");
+  Serial.println("Failed to configure Ethernet using DHCP");
     // no point in carrying on, so do nothing forevermore:
     for(;;)
       ;
-  }
+  } else {Serial.println("Ethernet connection stablished.");}
   // give the Ethernet shield a second to initialize:
+  
   delay(1000);
+// ***************************************************** //  
  
 }
 
-unsigned long previousmillis;
+
 
 void loop()
 {
   
-  if (millis() - previousmillis > 10000)
-  {
-    previousmillis = millis();
+  if (millis() - previousmillis > 10000)  {
+      previousmillis = millis();
     
      Serial.println("connecting...");
 
-  // if you get a connection, report back via serial:
+        // Make a HTTP request:
   if (client.connect(server, 80)) {
-    Serial.println("connected");
-    // Make a HTTP request:
-    client.println("GET http://www.sectorsocarrat.com/arduinohomemonitor/clock.php HTTP/1.0");
-    client.println();
-    analyze_response();
-   // client.stop();
+        Serial.println("connected");
+        client.println("GET http://www.sectorsocarrat.com/arduinohomemonitor/clock.php HTTP/1.0");
+        client.println();
+        client.println();
+            analyze_response();
+        client.stop();
   } 
   else {
-    // kf you didn't get a connection to the server:
+    // if you didn't get a connection to the server:
     Serial.println("connection failed");
   }
 
 
  
-  if (year > 0) Serial.println("Time acquired");
+//  if (year > 0) Serial.println("Time acquired");
   }
 }
 
@@ -84,14 +86,27 @@ unsigned long recheckmillis;
 
 void analyze_response()
 {
-    char c;
-    recheckmillis = millis();
-    while (      (client.available())   ||   (millis() - recheckmillis >1000)  )
+  Serial.println("inside analyze response");
+
+  for (int x = 0; x < 1000; x++)
+  {
+     // Serial.print(x);
+    if (client.available()) {
+    char c = client.read();
+    Serial.print(c);
+  }
+  }
+  
+  
+ //   recheckmillis = millis();
+ /*
+    while (      (client.available()) > 10   )   // ||   (millis() - recheckmillis >10000)
     {
     Serial.println("Waiting for client available");
     c = client.read();Serial.println(c);
     if (client.available()) {Serial.println("clientavailable");}
     }
+    */
   /*
     Serial.println("Analyze Response...");
   int month;
@@ -110,7 +125,14 @@ void analyze_response()
       if (millis() - previousmillis > 3000) 
       break;
       }
-      /*
+  
+  }
+
+  }
+
+
+
+    /*
     Serial.println("String started");
     temp = (client.read() - '0');
     year = temp * 1000;
@@ -120,8 +142,6 @@ void analyze_response()
     year = year + temp * 10;
     temp = (client.read() - '0');
     year = year + temp * 1;
+    
+        Serial.print(year);
     */
-  }
-    Serial.print(year);
-  }
-
