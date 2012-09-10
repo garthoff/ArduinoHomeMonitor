@@ -175,25 +175,8 @@ int weather_status;
 
 
 void setup(void) {
-// ***************** Define pins Modes ***************** //
-    pinMode(Pin_over_temp,OUTPUT);
-// ***************************************************** //  
-  
-  Serial.begin(9600);
-  
-  // ****************** Ethernet SETUP ******************* //
-  // start the Ethernet connection:
-  if (Ethernet.begin(mac) == 0) {
-  Serial.println("Failed to configure Ethernet using DHCP");
-    // no point in carrying on, so do nothing forevermore:
-    for(;;)
-      ;
-  } else {Serial.println("Ethernet connection stablished.");}
-  // give the Ethernet shield a second to initialize:
-  
-  delay(1000);
-// ***************************************************** //  
 
+  Serial.begin(9600);
 
 // ************************ LCD ************************ //
 #ifdef LCD
@@ -201,14 +184,48 @@ void setup(void) {
   // Print a message to the LCD.
   lcd.backlight();
   lcd.setCursor(0, 0);  lcd.print("Arduino Home Monitor");
-  lcd.setCursor(0, 1);  lcd.print("VERSION "); lcd.print(VERSION);
-  lcd.setCursor(0, 3);  lcd.print("Loading...");
+  lcd.setCursor(0, 1);  lcd.print("Ver: "); lcd.print(VERSION); lcd.print("  By:Sergegsx");
+  lcd.setCursor(0, 3);  lcd.print("Loading...          ");
+  delay(2000);
 #endif
 // ***************************************************** //  
+
+// ***************** Define pins Modes ***************** //
+    #ifdef LCD
+      lcd.setCursor(0, 3);  lcd.print("Define pins Modes..."); delay(1000);
+    #endif
+    pinMode(Pin_over_temp,OUTPUT);
+// ***************************************************** //  
+  
+  
+// ****************** Ethernet Setup ******************* //
+   #ifdef LCD
+      lcd.setCursor(0, 3);  lcd.print("Ethernet Setup...   "); delay(1000);
+   #endif
+  // start the Ethernet connection:
+  if (Ethernet.begin(mac) == 0) {
+  Serial.println("Failed to configure Ethernet using DHCP");
+    // no point in carrying on, so do nothing forevermore:
+    for(;;)
+      ;
+  } else {
+  Serial.println("Ethernet connection stablished.");}
+     #ifdef LCD
+      lcd.setCursor(0, 3);  lcd.print("Ethernet Connected !"); delay(1000);
+     #endif
+  delay(1000);    // give the Ethernet shield a second to initialize:
+// ***************************************************** //  
+
+
+
   
 
 // *********** Check Temperatures Initially ************* //
 #ifdef DS18B20
+     #ifdef LCD
+          lcd.setCursor(0, 3);  lcd.print("CheckingTemperatures"); delay(1000);
+     #endif
+     
     checktemps_1();
     checktemps_1();
 #endif
@@ -216,15 +233,13 @@ void setup(void) {
 
 
 
-// ************************ LCD ************************ //
-#ifdef LCD
-  delay(2000);
-  lcd.clear();
-#endif
-// ***************************************************** //    
+
 
 
 // ************************ RTC ************************ //
+     #ifdef LCD
+          lcd.setCursor(0, 3);  lcd.print("Initiating RTC...   "); delay(1000);
+     #endif
     Wire.begin();
     RTC.begin();
 /*
@@ -239,22 +254,27 @@ void setup(void) {
 
 
 
-// ************************ DHT11 ************************ //
+// *************** Check DHT11 Initially *************** //
   #ifdef DHT11_module
+       #ifdef LCD
+          lcd.setCursor(0, 3);  lcd.print("Initiating DHT11... "); delay(1000);
+       #endif
       Serial.print("DHT11 LIBRARY VERSION: ");
       Serial.println(DHT11LIB_VERSION);
+      //***********
+          readDHT11();
+          weather();
   #endif
 // ***************************************************** //   
   
-  
 
-// ************** Check DHT11 Initially **************** //
-#ifdef DHT11_module
-    readDHT11();
-    weather();
-#endif
-// ***************************************************** //  
-
+// ************************ LCD ************************ //
+    #ifdef LCD
+       lcd.setCursor(0, 3);  lcd.print("*** END OF SETUP ***"); delay(500);
+      delay(2000);
+      lcd.clear();
+    #endif
+// ***************************************************** //    
 }
 
 
