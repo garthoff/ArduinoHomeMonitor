@@ -1,4 +1,4 @@
-# Arduino Home Monitor - Equipment Testing
+# Arduino Home Monitor - Libraries
 ### By: Sergio Escuder
 
 ## Libraries Needed
