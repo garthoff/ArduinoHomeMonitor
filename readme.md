@@ -1,5 +1,5 @@
 # Arduino Home Monitor
-# By: Sergio Escuder
+### By: Sergio Escuder
 
 ## Background information
 This is my first mayor project in Arduino and I will use this repository to create a full code documentation of everything needed for other Arduino enthusiasts to replicate, learn and make use of all the information gathered here.
