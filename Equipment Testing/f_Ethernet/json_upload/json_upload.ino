@@ -76,13 +76,13 @@ void loop ()
 void createJSON()
 {
     //strcpy(str,"/emoncms/post.php?json=");                //URL //If your using a shared server add in full URL here
-    strcpy(str,"GET http://xxxxxxxxxxxxxxxx.com/powermonitor/post.php?json=");                         //URL
+    strcpy(str,"GET http://sectorsocarrat.com/arduinohomemonitor/postjson.php?json=");                         //URL
 
     srtJSON(str);                             //Start JSON
       addJSON(str,"segundos",millis()/2);     //JSON line 2
       addJSON(str,"millis",millis());         //JSON line 1
     endJSON(str);                             //End JSON string
-   // strcat(str," HTTP/1.0");                //End JSON
+    strcat(str," HTTP/1.0");                //End JSON
     
     Serial.println();        Serial.println(str);        Serial.println();
 }
@@ -104,6 +104,7 @@ void uploadtomysql(){
         if (client.connect(server, 80)) {
           Serial.println("connected");
                         client.println(str);
+                        client.println();
                         client.println();
                         client.stop();
                         

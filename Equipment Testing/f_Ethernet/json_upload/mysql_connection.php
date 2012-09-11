@@ -1,13 +1,10 @@
 <?
 
-// save to mysql
-echo "<br><br><br>";
-    $db_host = '188.121.zz.zzz';
-    $db_name = 'xxxx';
-    $db_user = 'xxxx';
-    $db_pass = 'xxxx';
-    $table = 'data';
+    $db_host = '188.121.44.141';          //'energypowerdata.db.5633130.hostedresource.com'; //'188.121.44.5';      //'188.121.44.5';
+    $db_name = 'arduinohmonitor';
+    $db_user = 'arduinohmonitor';
+    $db_pass = 'AHM130984ahm';
     
-    
+    if (isset($table)) {} else {$table = 'data';}
     
 ?>

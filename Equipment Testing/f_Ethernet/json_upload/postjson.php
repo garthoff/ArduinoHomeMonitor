@@ -21,8 +21,8 @@
 $create_columns_automatically = true;        // Creates automatically new columns based on new parameters send by the arduino
 $send_email = false;                         // sends an email on each data upload
 $save_to_file = false;
-    $table = "data";                     // Define the mysql table to create and store
-    
+    $table = "datajson";                     // Define the mysql table to create and store
+
   //---------------------------------------------------------------------------------------
   // 1) Fetch the json string
   //---------------------------------------------------------------------------------------
@@ -64,13 +64,13 @@ $save_to_file = false;
     //***
 
 
-    //*********************************************************************
+    //************************************************************************
     // 2.3) REATE THE MYSQL QUERY with all info in the $datapair of each loop
-    $log .= "Data name: " . $datapair[0] . " Value: " . $value . "\n";
-    
-    $query_insert .= $datapair[0] . ",";
-    $query_values .= $datapair[1] . ",";
-    //*********************************************************************
+        $log .= "Data name: " . $datapair[0] . " Value: " . $value . "\n";
+        
+        $query_insert .= $datapair[0] . ",";    // Insert $datapair key   data to $query
+        $query_values .= $datapair[1] . ",";    // Insert $datapair value data to $query
+    //************************************************************************
   }
 
 
@@ -83,7 +83,7 @@ echo "<br>";
 
 //*********************************************************************
 // 3) FINISH THE MYSQL QUERY
-$query_start = "INSERT INTO {$table} (";
+$query_start = "INSERT INTO {$table} (";  //$query_start = "INSERT INTO datajson (";
     $query_insert = "B, "           . substr($query_insert,0,-1);
     $query_values = time() .", "    . substr($query_values,0,-1);
     
@@ -104,7 +104,7 @@ echo "<br>" . $query;
     // 4) Connect to the server/database
 
     include 'mysql_connection.php';
-    
+
     $con = mysql_connect($db_host, $db_user, $db_pass); //$db_host,"ArduinoHMonitor","AHM130984ahm");
     if (!$con)
       {
