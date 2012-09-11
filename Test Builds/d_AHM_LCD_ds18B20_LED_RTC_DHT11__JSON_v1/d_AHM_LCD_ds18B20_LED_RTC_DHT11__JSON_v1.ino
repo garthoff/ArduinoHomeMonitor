@@ -333,7 +333,7 @@ void loop(void) {
 void createJSON()
 {
     //strcpy(str,"/emoncms/post.php?json=");                //URL //If your using a shared server add in full URL here
-    strcpy(str,"GET http://xxxxxxxxxxxxxxxxx.com/arduinohomemonitor/post.php?json=");                         //URL
+    strcpy(str,"GET http://sectorsocarrat.com/arduinohomemonitor/post.php?json=");                         //URL
 
     srtJSON(str);                                   //Start JSON
       addJSON(str,"temp_box",temp_caja);            //JSON line 1

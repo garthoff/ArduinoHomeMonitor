@@ -1,5 +1,5 @@
 # Arduino Home Monitor
-# Equipment Testing
+# Test Builds
 # By: Sergio Escuder
 
 ## Background information
